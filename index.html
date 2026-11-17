@@ -1,325 +1,467 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Milan Raythatha</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <link rel="icon" href="images/logo.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/main.css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Milan Raythatha | Data &amp; Business Intelligence Analyst</title>
+    <meta name="description" content="Milan Raythatha is a data and BI analyst in Dallas, TX. He builds automated reporting and Power BI dashboards with Python and SQL. Experience, projects and skills.">
+    <meta property="og:title" content="Milan Raythatha | Data &amp; Business Intelligence Analyst">
+    <meta property="og:description" content="Data and BI analyst in Dallas, TX. Python, SQL and Power BI. Experience, projects and skills.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#100f0d">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f6c453'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' text-anchor='middle' fill='%2317130a'%3EM%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
+    <style>
+        :root {
+            --bg: #100f0d;
+            --cell: #171613;
+            --rule: #2c2a25;
+            --ink: #ede8dd;
+            --muted: #a59e90;
+            --faint: #6f695e;
+            --hl: #f6c453;
+            --hl-ink: #17130a;
+            --max: 1080px;
+            --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+            --serif: "Instrument Serif", "Iowan Old Style", Georgia, "Times New Roman", serif;
+            --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+        body {
+            margin: 0; background: var(--bg); color: var(--ink);
+            font-family: var(--sans); font-size: 17px; line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; }
+        p { margin: 0 0 1em; }
+        h1, h2, h3 { margin: 0; font-weight: 400; }
+        ul, ol { margin: 0; padding: 0; list-style: none; }
+        :focus-visible { outline: 2px solid var(--hl); outline-offset: 3px; }
+        mark { background: var(--hl); color: var(--hl-ink); padding: 0 .1em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+        .wrap { width: min(var(--max), 100% - 40px); margin-inline: auto; }
+        .mono { font-family: var(--mono); font-size: 13px; letter-spacing: .02em; }
+        .skip { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--hl); color: var(--hl-ink); padding: 8px 14px; }
+        .skip:focus { left: 8px; }
+
+        /* Nav */
+        .nav { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--rule); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .brand { font-family: var(--serif); font-size: 24px; text-decoration: none; line-height: 1; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { font-family: var(--mono); font-size: 13px; color: var(--muted); text-decoration: none; }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links a.cv { color: var(--hl-ink); background: var(--hl); padding: 6px 12px; }
+        .nav-toggle { display: none; background: none; border: 1px solid var(--rule); color: var(--ink); font-family: var(--mono); font-size: 13px; padding: 8px 12px; cursor: pointer; }
+
+        /* Hero */
+        .hero { padding: 72px 0 0; }
+        .kicker { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+        .hero h1 {
+            font-family: var(--serif); font-size: clamp(44px, 8.2vw, 104px); line-height: 1.02; letter-spacing: -0.015em;
+            max-width: 15.5em; margin-bottom: 56px; text-wrap: balance;
+        }
+        .hero-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; padding-bottom: 72px; }
+        .lede { font-size: 20px; line-height: 1.55; color: var(--muted); max-width: 30em; }
+        .lede strong { color: var(--ink); font-weight: 500; }
+        .actions { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; margin: 32px 0 0; }
+        .btn {
+            display: inline-block; background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 600; font-size: 15px;
+            padding: 13px 22px; border: 0; cursor: pointer; font-family: var(--sans);
+        }
+        .btn:hover { background: var(--hl); color: var(--hl-ink); }
+        .textlink { font-family: var(--mono); font-size: 14px; text-underline-offset: 5px; text-decoration-color: var(--faint); }
+        .textlink:hover { text-decoration-color: var(--hl); color: var(--hl); }
+
+        /* Spreadsheet fragment */
+        .sheet { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13.5px; background: var(--cell); }
+        .sheet th, .sheet td { border: 1px solid var(--rule); padding: 10px 12px; text-align: left; vertical-align: top; font-weight: 400; }
+        .sheet .idx { color: var(--faint); text-align: center; width: 34px; padding-inline: 0; background: var(--bg); }
+        .sheet thead th { color: var(--faint); text-align: center; background: var(--bg); padding-block: 5px; }
+        .sheet th[scope="row"] { color: var(--muted); white-space: nowrap; }
+        .sheet td { color: var(--ink); }
+        .sheet .found td { background: var(--hl); color: var(--hl-ink); }
+
+        /* Ledger strip */
+        .ledger { border-block: 1px solid var(--rule); }
+        .ledger .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+        .ledger div { padding: 28px 24px; border-left: 1px solid var(--rule); }
+        .ledger div:first-child { border-left: 0; padding-left: 0; }
+        .ledger b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4.4vw, 52px); line-height: 1; margin-bottom: 10px; }
+        .ledger span { color: var(--muted); font-size: 14.5px; line-height: 1.45; display: block; }
+
+        /* Sections */
+        section { padding: 96px 0 0; }
+        .sec { display: grid; grid-template-columns: 200px 1fr; align-items: baseline; border-top: 1px solid var(--ink); padding-top: 18px; margin-bottom: 40px; }
+        .sec .no { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+        .sec h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); line-height: 1; }
+
+        .row { display: grid; grid-template-columns: 200px 1fr; padding: 28px 0; border-top: 1px solid var(--rule); }
+        .row:first-of-type { border-top: 0; padding-top: 0; }
+        .row .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 5px; line-height: 1.7; }
+        .row h3 { font-family: var(--sans); font-weight: 600; font-size: 21px; line-height: 1.3; }
+        .row .org { font-family: var(--serif); font-style: italic; font-size: 21px; color: var(--muted); margin-bottom: 14px; }
+        .row ul { list-style: none; max-width: 44em; }
+        .row li { color: var(--muted); padding-left: 22px; position: relative; margin-bottom: 8px; font-size: 16px; }
+        .row li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+        .row li b { color: var(--ink); font-weight: 500; }
+        .tag-now { font-family: var(--mono); font-size: 11px; background: var(--hl); color: var(--hl-ink); padding: 2px 7px; margin-left: 10px; vertical-align: 3px; letter-spacing: .04em; }
+
+        /* Project index */
+        .index li { border-top: 1px solid var(--rule); }
+        .index li:first-child { border-top: 0; }
+        .index a {
+            display: grid; grid-template-columns: 200px 1fr 220px 24px; gap: 0 24px; align-items: baseline;
+            padding: 22px 0; text-decoration: none;
+        }
+        .index .n { font-family: var(--mono); font-size: 13px; color: var(--faint); }
+        .index .t { font-family: var(--serif); font-size: 28px; line-height: 1.15; display: block; margin-bottom: 6px; }
+        .index .d { color: var(--muted); font-size: 15.5px; display: block; max-width: 38em; }
+        .index .s { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+        .index .go { color: var(--faint); font-size: 18px; text-align: right; }
+        .index a:hover { background: var(--cell); }
+        .index a:hover .t { text-decoration: underline; text-decoration-color: var(--hl); text-decoration-thickness: 3px; text-underline-offset: 5px; }
+        .index a:hover .go { color: var(--hl); }
+
+        /* Definition rows */
+        .defs div { display: grid; grid-template-columns: 200px 1fr; padding: 16px 0; border-top: 1px solid var(--rule); }
+        .defs div:first-child { border-top: 0; padding-top: 0; }
+        .defs dt { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 3px; }
+        .defs dd { margin: 0; max-width: 44em; }
+
+        /* About */
+        .about { display: grid; grid-template-columns: 200px 1fr; }
+        .about blockquote { margin: 0 0 32px; font-family: var(--serif); font-size: clamp(28px, 3.6vw, 42px); line-height: 1.15; max-width: 20em; }
+        .about p { color: var(--muted); max-width: 40em; }
+        .about p strong { color: var(--ink); font-weight: 500; }
+
+        /* Contact */
+        .contact { display: grid; grid-template-columns: 200px 1.3fr 1fr; gap: 0 56px; }
+        .contact .spacer { grid-column: 1; }
+        form { display: grid; gap: 18px; }
+        .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        label { display: block; font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+        input, textarea {
+            width: 100%; font: inherit; color: var(--ink); background: var(--cell);
+            border: 1px solid var(--rule); border-radius: 0; padding: 12px 14px;
+        }
+        input:focus, textarea:focus { outline: none; border-color: var(--hl); }
+        textarea { min-height: 150px; resize: vertical; }
+        .hp { position: absolute; left: -9999px; }
+        .reach li { border-top: 1px solid var(--rule); }
+        .reach li:first-child { border-top: 0; }
+        .reach a { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; text-decoration: none; }
+        .reach li:first-child a { padding-top: 0; }
+        .reach span { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+        .reach a:hover b { color: var(--hl); }
+        .reach b { font-weight: 500; }
+
+        footer { margin-top: 96px; border-top: 1px solid var(--rule); padding: 24px 0 32px; font-family: var(--mono); font-size: 12.5px; color: var(--faint); }
+        footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        footer a { color: var(--muted); }
+
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+        @media (max-width: 860px) {
+            .nav-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: var(--bg); border-bottom: 1px solid var(--rule); padding: 8px 20px 20px; }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 12px 0; font-size: 15px; }
+            .nav-links a.cv { padding: 8px 14px; margin-top: 8px; }
+            .hero { padding-top: 48px; }
+            .hero h1 { margin-bottom: 36px; }
+            .hero-cols { grid-template-columns: 1fr; gap: 40px; padding-bottom: 56px; }
+            .ledger .wrap { grid-template-columns: 1fr 1fr; }
+            .ledger div { padding: 22px 16px; }
+            .ledger div:nth-child(odd) { border-left: 0; padding-left: 0; }
+            .ledger div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+            section { padding-top: 72px; }
+            .sec, .row, .defs div, .about { grid-template-columns: 1fr; }
+            .sec { margin-bottom: 28px; }
+            .sec .no { margin-bottom: 8px; }
+            .row .when { padding: 0 0 8px; }
+            .defs dt { padding: 0 0 4px; }
+            .index a { grid-template-columns: 1fr 24px; gap: 4px 12px; }
+            .index .n { grid-column: 1 / -1; }
+            .index .s { grid-column: 1; margin-top: 8px; }
+            .index .go { grid-row: 2; grid-column: 2; }
+            .contact { grid-template-columns: 1fr; gap: 48px; }
+            .contact .spacer { display: none; }
+            .two { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-<body class="is-preload">
-<style>
-    /* Align nav to the left */
-    #nav {
-        text-align: left;
-        padding-left: 1em;
-    }
+<body>
+<a class="skip" href="#main">Skip to content</a>
 
-    .special-logo {
-        text-align: left;
-        width: 48px;
-        height: 48px;
-        filter: invert(100%);
-    }
+<header class="nav">
+    <div class="wrap nav-inner">
+        <a class="brand" href="#top">Milan Raythatha</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <nav class="nav-links" id="nav-links" aria-label="Main">
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a class="cv" href="assets/Milan_Raythatha_Resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+        </nav>
+    </div>
+</header>
 
-    .special-container {
-        margin: 0 auto;
-        max-width: calc(100% - 50px);
-        width: 1200px;
-        align-items: flex-start;
-        display: flex;
-    }
+<main id="main">
 
-</style>
-<!-- Nav -->
-<nav id="nav">
-    <ul class="special-container">
-        <li><img src="images/logo.png" alt="MR" class="special-logo"></li>
-        <li><a href="#top">About</a></li>
-        <li><a href="#work">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="assets/Raythatha.BSA.SC.pdf" target="_blank">Resume</a></li>
-    </ul>
-</nav>
+    <!-- Hero -->
+    <div class="hero wrap" id="top">
+        <p class="kicker">Data &amp; BI analyst · Dallas, TX</p>
+        <h1>Nine spreadsheets in.<br><mark>One report</mark> out.</h1>
 
-<style>
-    .special-h1 {
-        font-size: 48px; /* Adjust the font size as desired */
-        text-align: right; /* Aligning the text to the right */
-        color: #ffffff; /* Change the color to white or any other color code */
-    }
-
-    .special-h2 {
-        font-size: 20px; /* Adjust the font size as desired */
-        text-align: right; /* Aligning the text to the right */
-        color: #ffffff; /* Change the color to white or any other color code */
-    }
-
-    .special-para {
-        text-align: right; /* Aligning the text to the right */
-        color: #ffffff; /* Change the color to white or any other color code */
-    }
-</style>
-<!-- Home -->
-<article id="top" class="wrapper style1"
-         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/pic010.jpg') no-repeat; background-size: cover;">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-4 col-5-large col-12-medium">
-                <!-- Image will be set as background, so no need for this div -->
+        <div class="hero-cols">
+            <div>
+                <p class="lede">I'm Milan, a data and BI analyst. Every month, nine manual Excel files had to become one leadership report, so I automated it in Python. That's the kind of puzzle I like: <strong>the answer is already in the data, and nobody has seen it yet.</strong> I dig it out with Python, SQL and Power BI.</p>
+                <p class="actions">
+                    <a class="btn" href="#experience">See how</a>
+                    <a class="textlink" href="mailto:milanraythatha5@gmail.com">milanraythatha5@gmail.com</a>
+                </p>
             </div>
-            <div class="col-8 col-7-large col-12-medium">
-                <header>
-                    <h1 class="special-h1">Hi. I'm <strong class="special-h1">Milan Raythatha</strong>,</h1>
-                    <h2 class="special-h2"><em>'Contemplative coder and analyst. Inspired by tough problems'</em></h2>
-                </header>
-                <p style="text-align: right;" class="special-para">I hold a Master’s degree in science (Information
-                    systems and operations management, University of Texas at Arlington). Since I was young, I have
-                    always enjoyed solving puzzles. So that’s how I look at big data sets: to me it is one big puzzle I
-                    want to solve. Finding patterns nobody else sees is the challenge to me.</p>
-                <a href="#work" class="button small scrolly" style="float: right;">Learn about what I do</a>
-                <!-- Adjusting button alignment -->
-            </div>
+
+            <table class="sheet">
+                <thead aria-hidden="true">
+                    <tr><th class="idx"></th><th>A</th><th>B</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="idx" aria-hidden="true">1</td><th scope="row">role</th><td>AI Data Analyst, Morrison Healthcare</td></tr>
+                    <tr><td class="idx" aria-hidden="true">2</td><th scope="row">experience</th><td>3+ years</td></tr>
+                    <tr><td class="idx" aria-hidden="true">3</td><th scope="row">stack</th><td>Python · SQL · Power BI (DAX)</td></tr>
+                    <tr class="found"><td class="idx" aria-hidden="true">4</td><th scope="row">savings_found</th><td>$3M+</td></tr>
+                    <tr><td class="idx" aria-hidden="true">5</td><th scope="row">studying</th><td>Ph.D., Artificial Intelligence</td></tr>
+                    <tr><td class="idx" aria-hidden="true">6</td><th scope="row">certified</th><td>Power BI · Fabric · Tableau</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
-</article>
 
-<style>
-    .special-row.aln-center {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; /* Center the flex items horizontally */
-    }
-
-    .speical-col-4 {
-        flex: 0 0 calc(33.33% - 2em); /* Adjust the width of each column */
-        margin: 1em; /* Add some margin around each column */
-    }
-
-    .special-box {
-        height: 100%; /* Set a fixed height for each box */
-        display: flex;
-        flex-direction: column;
-    }
-
-    .special-box > * {
-        flex-grow: 1; /* Make the content within the box occupy all available space */
-    }
-
-    .special-img {
-        width: 200px; /* Set the width to your desired size */
-        height: 200px; /* Maintain aspect ratio */
-    }
-</style>
-<!-- Work -->
-<article id="work" class="wrapper style2">
-    <div class="container">
-        <header>
-            <h2>Here's all the stuff I do.</h2>
-            <p>My job consists of helping companies analyze and visualize their datasets. I am skilled for most
-                data-science steps: data pre-processing, application of statistical methods, data visualization, and
-                results communication.</p>
-        </header>
-        <div class="container">
-            <div class="special-row aln-center">
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <section class="special-box style2">
-                        <span class="icon solid featured fa-database"></span>
-                        <h3>Data Management</h3>
-                        <p>Data harvesting, cleaning, and reshaping. Development of automated workflows.</p>
-                    </section>
-                </div>
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <section class="special-box style2">
-                        <span class="icon solid featured fa-search"></span>
-                        <h3>Data Mining</h3>
-                        <p>Data exploration, application of statistical methods, reproducible data analysis.</p>
-                    </section>
-                </div>
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <section class="special-box style2">
-                        <span class="icon featured fa-comments"></span>
-                        <h3>Data Analytics</h3>
-                        <p>Utilizing advanced analytical techniques to derive insights from data.</p>
-                    </section>
-                </div>
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <section class="special-box style2">
-                        <span class="icon featured fa-chart-bar"></span>
-                        <h3>Data Visualization</h3>
-                        <p>Design dynamic and interactive data visualizations and dashboards showcasing key performance
-                            indicators(KPIs).</p>
-                    </section>
-                </div>
-            </div>
-
+    <!-- Ledger -->
+    <div class="ledger" aria-label="Results in numbers">
+        <div class="wrap">
+            <div><b>1,200+</b><span>cost centers tracked on my Power BI dashboards</span></div>
+            <div><b>5M+</b><span>procurement records enriched and analyzed</span></div>
+            <div><b>−70%</b><span>ad-hoc data requests after 16 self-serve reports</span></div>
+            <div><b>10 hrs</b><span>saved per week by scripting a manual data pull</span></div>
         </div>
-        <footer>
-            <p>Have fun browsing through the content and thank you for visiting!</p>
-            <a href="#portfolio" class="button small scrolly">See some of my recent work</a>
-        </footer>
     </div>
-</article>
 
+    <!-- Experience -->
+    <section id="experience">
+        <div class="wrap">
+            <header class="sec"><span class="no">01</span><h2>Experience</h2></header>
 
-<!-- Portfolio -->
-<article id="portfolio" class="wrapper style3">
-    <div class="container">
-        <header>
-            <h2>Here’s some stuff I made recently.</h2>
-            <p>A list of my top data analysis projects, in the form of SQL scripts and Jupyter/R Notebooks. Most
-                notebooks are available fully open-sourced on GitHub, with a MIT license.</p>
-        </header>
-        <div class="container">
-            <div class="special-row aln-center">
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <article class="special-box style2">
-                        <a href="#" class="image featured"><img class="special-img" src="images/insta1.jpg" alt=""/></a>
-                        <h3><a href="https://github.com/milanraythatha/Instacart-Basket-Analysis">Instacart Basket
-                            Analysis</a></h3>
-                        <p>Data Exploration, Customer Segmentation, Association Rules Mining on the Instacart orders
-                            data.</p>
-                    </article>
+            <article class="row">
+                <div class="when">Mar 2025 – Present<br>United States</div>
+                <div>
+                    <h3>AI Data Analyst <span class="tag-now">NOW</span></h3>
+                    <p class="org">Morrison Healthcare (Compass Group)</p>
+                    <ul>
+                        <li>Drove <b>$3M+ in cost savings</b> by identifying pricing, sourcing and distributor-consolidation opportunities through deep spend analysis adopted by executive leadership.</li>
+                        <li>Enrich and analyze procurement datasets exceeding <b>5M records</b> to quantify value-added performance and surface savings opportunities across distributors.</li>
+                        <li>Build Power BI dashboards with custom DAX measures that give executive and divisional leadership visibility into value-added spend, distributor performance and category cost trends across <b>1,200+ cost centers</b>.</li>
+                        <li>Automate multi-source monthly reporting in Python (pandas, openpyxl), consolidating <b>9 manual Excel source files</b> into a single leadership report and removing hours of manual work each cycle.</li>
+                    </ul>
                 </div>
-                <div class="speical-col-4 col-6-medium col-12-small;">
-                    <article class="special-box style2">
-                        <a href="#" class="image featured"><img class="special-img" src="images/spotify.jpg"
-                                                                alt=""/></a>
-                        <h3><a href="https://github.com/milanraythatha/Spotify-Artists-Analysis">Spotify Artists
-                            Analysis</a></h3>
+            </article>
 
-                        <p>This project delves into data analysis and visualization for Spotify Artists' "This Is"
-                            playlist series, aiming to reveal insights and trends in the music industry.</p>
-                    </article>
+            <article class="row">
+                <div class="when">Jun 2024 – Mar 2025<br>Greenville, SC</div>
+                <div>
+                    <h3>Business Analyst II</h3>
+                    <p class="org">Greenville Technical College</p>
+                    <ul>
+                        <li>Developed <b>16 interactive Power BI reports</b> from SSMS and Oracle sources, cutting repetitive ad-hoc data requests by <b>70%</b>.</li>
+                        <li>Delivered <b>25+ custom SQL reports</b> with 90% accuracy for institutional research, funding proposals and executive presentations.</li>
+                        <li>Automated reporting with advanced DAX to reduce reporting time by <b>50%</b>, and resolved 95% of cross-department data inconsistencies.</li>
+                    </ul>
                 </div>
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <article class="special-box style2">
-                        <a href="#" class="image featured"><img class="special-img" src="images/netflix.jpg"
-                                                                alt=""/></a>
-                        <h3><a href="https://github.com/milanraythatha/Movie-recommendation-system">Movie Recommendation
-                            System</a></h3>
-                        <p>4 movie recommendation systems for the MovieLens dataset to provide personalized movie
-                            suggestions.</p>
-                    </article>
+            </article>
+
+            <article class="row">
+                <div class="when">Aug 2023 – Dec 2023<br>Dallas, TX</div>
+                <div>
+                    <h3>Data Analyst Intern</h3>
+                    <p class="org">HashTek Inc.</p>
+                    <ul>
+                        <li>Automated customer-data extraction with SQL scripts, eliminating manual pulls and saving the team about <b>10 hours per week</b>.</li>
+                        <li>Analyzed customer offers, churn and call performance to surface risks and opportunities, supporting a <b>25% rise</b> in customer satisfaction.</li>
+                        <li>Built Tableau dashboards and forecasting models that lifted user engagement 30% and improved forecast accuracy 15%.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="row">
+                <div class="when">Sep 2022 – Jul 2023<br>Arlington, TX</div>
+                <div>
+                    <h3>Research Data Analyst</h3>
+                    <p class="org">University of Texas at Arlington</p>
+                    <ul>
+                        <li>Ran statistical analysis on <b>25K+ observations</b> to identify correlations and patterns supporting research conclusions.</li>
+                        <li>Built a data-quality dashboard that improved accuracy 25% and streamlined reporting 30%, while leading a 5-person team to 95% on-time delivery.</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="wrap">
+            <header class="sec"><span class="no">02</span><h2>Side projects</h2></header>
+            <ol class="index">
+                <li><a href="https://github.com/milanraythatha/US-accidents-data" target="_blank" rel="noopener">
+                    <span class="n">01</span>
+                    <span><span class="t">US Accidents Data Lake</span><span class="d">An end-to-end pipeline for traffic accident records from 49 states, 2016 to 2023. Raw and optimized data lakes on S3 with a star schema, built to find accident patterns and high-risk areas.</span></span>
+                    <span class="s">Spark · Airflow<br>AWS S3 · EMR</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/milanraythatha/Amazon-sales-analytics" target="_blank" rel="noopener">
+                    <span class="n">02</span>
+                    <span><span class="t">Amazon Sales Analytics</span><span class="d">Ratings and reviews for more than 1,000 Amazon products, cleaned, modeled and explored to read customer sentiment and preferences. Ends in a Power BI report.</span></span>
+                    <span class="s">Python · MySQL<br>SQLite · Power BI</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/milanraythatha/NYC-Airbnb-listing-analysis" target="_blank" rel="noopener">
+                    <span class="n">03</span>
+                    <span><span class="t">NYC Airbnb Listings</span><span class="d">New York listings by borough, room type, price and reviews, including what sets superhosts apart. Delivered as an interactive Tableau dashboard.</span></span>
+                    <span class="s">SQL Server · Tableau<br>Python · Mapbox</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/milanraythatha/Instacart-Basket-Analysis" target="_blank" rel="noopener">
+                    <span class="n">04</span>
+                    <span><span class="t">Instacart Basket Analysis</span><span class="d">Customer segmentation and association-rule mining on Instacart orders: what shoppers buy together.</span></span>
+                    <span class="s">Python · Jupyter</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/milanraythatha/Movie-recommendation-system" target="_blank" rel="noopener">
+                    <span class="n">05</span>
+                    <span><span class="t">Movie Recommender</span><span class="d">A content-based recommender that suggests movies similar to ones you like and analyzes the sentiment of user reviews.</span></span>
+                    <span class="s">Python · Jupyter</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/milanraythatha/Spotify-Artists-Analysis" target="_blank" rel="noopener">
+                    <span class="n">06</span>
+                    <span><span class="t">Spotify Artists Analysis</span><span class="d">Spotify's “This Is” artist playlists pulled from the Web API, analyzed and charted in R.</span></span>
+                    <span class="s">R · Spotify Web API</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/milanraythatha/Glassdoor-Data-Preprocessing-And-EDA-Project" target="_blank" rel="noopener">
+                    <span class="n">07</span>
+                    <span><span class="t">Glassdoor Data Jobs</span><span class="d">Data science job postings from Glassdoor, cleaned and transformed in Python, then explored.</span></span>
+                    <span class="s">Python · Jupyter</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://github.com/milanraythatha/Covid-19-Analysis" target="_blank" rel="noopener">
+                    <span class="n">08</span>
+                    <span><span class="t">COVID-19 in SQL</span><span class="d">COVID-19 data cleansed and queried in SQL Server Management Studio to find patterns.</span></span>
+                    <span class="s">SQL Server · SSMS</span><span class="go" aria-hidden="true">↗</span></a></li>
+                <li><a href="https://public.tableau.com/app/profile/milan.raythatha/vizzes" target="_blank" rel="noopener">
+                    <span class="n">09</span>
+                    <span><span class="t">Tableau Public</span><span class="d">My published dashboards and charts.</span></span>
+                    <span class="s">Tableau</span><span class="go" aria-hidden="true">↗</span></a></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="wrap">
+            <header class="sec"><span class="no">03</span><h2>Skills</h2></header>
+            <dl class="defs">
+                <div><dt>BI &amp; visualization</dt><dd>Power BI (DAX), Tableau, SAS, SSRS, Excel (PivotTables, VLOOKUP)</dd></div>
+                <div><dt>Programming</dt><dd>Python (pandas, NumPy, openpyxl, matplotlib, seaborn), SQL, R</dd></div>
+                <div><dt>Databases &amp; CRM</dt><dd>SQL Server (SSMS), MySQL, Oracle DB, Snowflake, SQLite, Salesforce</dd></div>
+                <div><dt>Cloud &amp; ETL</dt><dd>AWS (data lake), SSIS, SnapLogic, Apache Spark, Apache Airflow</dd></div>
+                <div><dt>Tools</dt><dd>GitHub, Azure DevOps, Jupyter</dd></div>
+                <div><dt>Certifications</dt><dd>Power BI Data Analyst Associate, Fabric Data Engineer Associate, Tableau Desktop Specialist, Lean Six Sigma Green Belt, Data-Driven Decisions (Google)</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="wrap">
+            <header class="sec"><span class="no">04</span><h2>Education</h2></header>
+            <article class="row">
+                <div class="when">Aug 2026 – Present</div>
+                <div><h3>Ph.D., Artificial Intelligence</h3><p class="org" style="margin:0">University of the Cumberlands</p></div>
+            </article>
+            <article class="row">
+                <div class="when">Master's</div>
+                <div><h3>M.S., Information Systems &amp; Operations Management</h3><p class="org" style="margin:0">The University of Texas at Arlington</p></div>
+            </article>
+            <article class="row">
+                <div class="when">Bachelor's</div>
+                <div><h3>B.E., Computer Science</h3><p class="org" style="margin:0">Rajiv Gandhi College of Engineering, Research &amp; Technology</p></div>
+            </article>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="wrap">
+            <header class="sec"><span class="no">05</span><h2>About</h2></header>
+            <div class="about">
+                <div></div>
+                <div>
+                    <blockquote>Finding the pattern nobody else sees. That's the challenge I'm after.</blockquote>
+                    <p>Most of my work starts the same way: several exports that don't agree with each other and a question someone senior needs answered. I like that part. I clean and join the data, work out what it actually says, and build the report or dashboard so the answer keeps arriving without me.</p>
+                    <p>Right now that is procurement and spend data at <strong>Morrison Healthcare</strong>. Before that it was institutional research and funding data at Greenville Technical College, customer and call data at HashTek, and research data at UT Arlington. I'm also working on a <strong>Ph.D. in Artificial Intelligence</strong>.</p>
+                    <p>Off the clock: looking for a great cup of coffee, or a hiking trail I haven't done yet.</p>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="container">
-            <div class="special-row aln-center">
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <article class="special-box style2">
-                        <a href="#" class="image featured"><img class="special-img" src="images/glassdoors.jpg" alt=""/></a>
-                        <h3><a href="https://github.com/milanraythatha/Glassdoor-Data-Preprocessing-And-EDA-Project">Glassdoor
-                            Data Jobs Analysis</a></h3>
-                        <p>A portfolio project centered on data cleaning and transforming data science job postings
-                            sourced from Glassdoor using Python Resources.</p>
-                    </article>
-                </div>
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <article class="special-box style2">
-                        <a href="#" class="image featured"><img class="special-img" src="images/covid.jpg" alt=""/></a>
-                        <h3><a href="https://github.com/milanraythatha/Covid-19-Analysis">Covid - 19 Data Analysis</a>
-                        </h3>
-                        <p>Performing COVID- 19 data cleansing and manipulation through SQL using SQL Server Management
-                            Studio (SSMS) to find patterns</p>
-                    </article>
-                </div>
-                <div class="speical-col-4 col-6-medium col-12-small">
-                    <article class="special-box style2">
-                        <a href="#" class="image featured"><img class="special-img" src="images/tableau.jpg"
-                                                                alt=""/></a>
-                        <h3><a href="https://public.tableau.com/app/profile/milan.raythatha/vizzes">Tableau Public
-                            Profile</a></h3>
-                        <p>Collection of visually engaging charts and graphs showcasing essential Key Performance
-                            Indicators (KPIs) is what defines my Tableau Public profile.</p>
-                    </article>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <a href="#contact" class="button small scrolly">Get in touch with me</a>
-        </footer>
-    </div>
-</article>
-<!-- Contact -->
-<article id="contact" class="wrapper style4">
-    <div class="container medium">
-        <header>
-            <h2>Have me make stuff for you.</h2>
+    </section>
 
-        </header>
-        <div class="row">
-            <div class="col-12">
+    <!-- Contact -->
+    <section id="contact">
+        <div class="wrap">
+            <header class="sec"><span class="no">06</span><h2>Contact</h2></header>
+            <div class="contact">
+                <div class="spacer"></div>
                 <form method="post" action="https://formspree.io/f/xvoevbbn">
-								<div class="row">
-									<div class="col-6 col-12-small">
-										<input type="text" name="name" id="name" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="text" name="email" id="email" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<input type="text" name="subject" id="subject" placeholder="Subject" />
-									</div>
-									<div class="col-12">
-										<textarea name="message" id="message" placeholder="Message"></textarea>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" /></li>
-											<li><input type="reset" value="Clear Form" class="alt" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-            </div>
-            <div class="col-12" style="text-align: left;">
-                <hr/>
-                <h3>Find me on ...</h3>
-                <ul class="social">
-
-                    <li><a href="https://www.linkedin.com/in/milanraythatha/" class="icon brands fa-linkedin-in"><span
-                            class="label">LinkedIn</span></a></li>
-
-                    <li><a href="https://github.com/milanraythatha" class="icon brands fa-github"><span class="label">Github</span></a>
-                    </li>
-                    <!--
-                    <li><a href="#" class="icon solid fa-rss"><span>RSS</span></a></li>
-                    <li><a href="#" class="icon brands fa-instagram"><span>Instagram</span></a></li>
-                    <li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
-                    <li><a href="#" class="icon brands fa-skype"><span>Skype</span></a></li>
-                    <li><a href="#" class="icon brands fa-soundcloud"><span>Soundcloud</span></a></li>
-                    <li><a href="#" class="icon brands fa-youtube"><span>YouTube</span></a></li>
-                    <li><a href="#" class="icon brands fa-blogger"><span>Blogger</span></a></li>
-                    <li><a href="#" class="icon brands fa-flickr"><span>Flickr</span></a></li>
-                    <li><a href="#" class="icon brands fa-vimeo"><span>Vimeo</span></a></li>
-                    -->
+                    <div class="two">
+                        <div><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
+                        <div><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+                    </div>
+                    <div><label for="subject">Subject</label><input type="text" id="subject" name="subject"></div>
+                    <div><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+                    <div class="hp" aria-hidden="true"><label for="gotcha">Leave this field empty</label><input type="text" id="gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+                    <div><button class="btn" type="submit">Send message</button></div>
+                </form>
+                <ul class="reach">
+                    <li><a href="mailto:milanraythatha5@gmail.com"><b>Email</b><span>milanraythatha5@gmail.com</span></a></li>
+                    <li><a href="https://www.linkedin.com/in/milanraythatha/" target="_blank" rel="noopener"><b>LinkedIn</b><span>in/milanraythatha ↗</span></a></li>
+                    <li><a href="https://github.com/milanraythatha" target="_blank" rel="noopener"><b>GitHub</b><span>milanraythatha ↗</span></a></li>
+                    <li><a href="https://public.tableau.com/app/profile/milan.raythatha/vizzes" target="_blank" rel="noopener"><b>Tableau Public</b><span>milan.raythatha ↗</span></a></li>
                 </ul>
-                <div class="col-12"></div>
-                milanraythatha5@gmail.com
             </div>
         </div>
-        <hr/>
+    </section>
+</main>
 
+<footer>
+    <div class="wrap">
+        <span>&copy; <span id="year">2026</span> Milan Raythatha</span>
+        <a href="#top">Back to top</a>
     </div>
-    <footer>
-        <ul id="copyright">
-            <li>Copyright &copy; Milan Raythatha. All rights reserved.</li>
-        </ul>
-    </footer>
-    </div>
-</article>
+</footer>
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
+<script>
+    (function () {
+        document.getElementById('year').textContent = new Date().getFullYear();
+        var toggle = document.querySelector('.nav-toggle');
+        var links = document.getElementById('nav-links');
+        toggle.addEventListener('click', function () {
+            var open = links.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
+            toggle.textContent = open ? 'Close' : 'Menu';
+        });
+        links.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                links.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = 'Menu';
+            }
+        });
+    })();
+</script>
 </body>
 </html>
